@@ -17,7 +17,9 @@
 AWS, PG admin, PySpark, Google colab, Pandas lib., Jupyter notebook.
 
 ## Results
+[ETL code](Amazon_Reviews_ETL.ipynb)
 
+[Vine review analysis code](Vine_Review_Analysis.ipynb)
 - First I filtered to get reviews that have a least 20 reader votes, 50% or more of which are stating the review is helpful.
 
 - I then split this data frame into two. One data frame containing vine user reviews,
