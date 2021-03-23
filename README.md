@@ -43,9 +43,7 @@ The written analysis has the following:
 Overview of the analysis of the Vine program:
 
 The purpose of this analysis is well defined (3 pt)
-Results:
 
-There is a bulleted list that addresses the three questions for unpaid and paid program reviews (7 pt)
 Summary:
 
 The summary states whether or not there is bias, and the results support this statement (2 pt)
@@ -54,11 +52,49 @@ An additional analysis is recommended to support the statement (2 pt)
 
 ## Overview
 - We are analyzing Amazon reviews written by members of the paid Amazon Vine program. The Amazon Vine program is a service that allows manufacturers and publishers to receive reviews for their products. Companies pay a small fee to Amazon and provide products to Amazon Vine members, who are then required to publish a review.
-We are aiming to determine if there is any bias toward favorable reviews from Vine members in your dataset.
-- Using the cloud ETL process, we have created an AWS RDS database with tables in pgAdmin,  we have taken an Amazon "Video Game" Review dataset, and extracted into a DataFrame. We transformed the DataFrame into four separate DataFrames that match the table schema in pgAdmin, and uploaded our transformed data.
-- From here we exported a table as a csv file and used Pandas to filtered the df to find a set of reviews that are form vine members and a set from non-vine members. We then calculated the percentage of five-star reviews given in each of these sets. 
+**We are aiming to determine if there is any bias toward favorable reviews from Vine members in a given dataset.**
+- Using the cloud ETL process, we have created an AWS RDS database with tables in pgAdmin,  we have taken an Amazon "Video Game" Review dataset, and extracted into a DataFrame. We transformed the DataFrame into four separate DataFrames that match a table schema we created in pgAdmin, and then uploaded our transformed data.
+- From here we exported a table as a csv file and used Pandas to filter the df to find a collection of reviews that are form vine members and a collection from non-vine members. We then calculated the percentage of five-star reviews given in each of these sets. 
 
 ## Resources
-AWS, PGadmin, PySpark, Google colab, Pandas lib., Jupyter notebook.
+AWS, PG admin, PySpark, Google colab, Pandas lib., Jupyter notebook.
 
 ## Results
+
+- First I filtered to get reviews that have a least 20 reader votes, 50% or more of which are stating the review is helpful.
+
+- I then split this data frame into two. One data frame containing vine user reviews,
+
+ ![vine review df](analysis/helpful_vine_df.png)
+
+ and one for non-Vine reviews. 
+ ![non-vine review df](analysis/helpful_nonvine.png)
+
+ - I am then able obtain the following numbers for **vine reviews**.
+    - Total count = 94
+    - Five Star ratings = 48
+    - Percentage of  reviews five star = 51.06 %
+
+![vine review results](analysis/vine_review_figures.png)
+
+- For **non-Vine** reviews the results are:
+    - Total count = 40471
+    - Five Star rating = 15663
+    - Percentage of reviews five star = 38.7%
+
+![Non-vine review results](analysis/nonvine_review_figures.png)
+
+- I then used .value_counts() to check these results, and have a look at what the numbers would look like for other star ratings.
+
+![vine value counts](analysis/vine_valuecounts.png)
+
+![non-vine value counts](analysis/nonvine_valuecount.png)
+
+
+
+
+
+## Summary
+Summary: In your summary, state if there is any positivity bias for reviews in the Vine program. Use the results of your analysis to support your statement. Then, provide one additional analysis that you could do with the dataset to support your statement.
+
+
